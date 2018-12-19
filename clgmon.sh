@@ -27,6 +27,6 @@ echo 'Sync Status: \n# collegicoin-cli mnsync status' &&  collegicoin-cli -datad
 echo '==========================================================================='
 echo 'Masternode Information: \n# collegicoin-cli getinfo' && collegicoin-cli -datadir=$datadir getinfo
 echo '==========================================================================='
-echo 'Usage: monmon.sh [refresh delay] [datadir index]'
-echo 'Example: monmon.sh 10 22 will run every 10 seconds and query collegicoind in /$USER/.collegicoin22'
+echo 'Usage: clgmon.sh [refresh delay] [datadir index]'
+echo 'Example: clgmon.sh 10 22 will run every 10 seconds and query collegicoind in /$USER/.collegicoin22'
 echo '\n\nPress Ctrl-C to Exit...'"
