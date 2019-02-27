@@ -1,10 +1,10 @@
 #!/bin/bash
-# monmon 1.0 - Collegicoin Masternode Monitoring 
+# clgmon 2.0 - Collegicoin Masternode Monitoring 
 
 #Processing command line params
 if [ -z $1 ]; then dly=1; else dly=$1; fi   # Default refresh time is 1 sec
 
-datadir="/$USER/.collegicoin$2"   # Default datadir is /root/.collegicoin
+datadir="/$USER/.collegicoincore$2"   # Default datadir is /root/.collegicoincore
  
 # Install jq if it's not present
 dpkg -s jq 2>/dev/null >/dev/null || sudo apt-get -y install jq
@@ -28,5 +28,5 @@ echo '==========================================================================
 echo 'Masternode Information: \n# collegicoin-cli getinfo' && collegicoin-cli -datadir=$datadir getinfo
 echo '==========================================================================='
 echo 'Usage: clgmon.sh [refresh delay] [datadir index]'
-echo 'Example: clgmon.sh 10 22 will run every 10 seconds and query collegicoind in /$USER/.collegicoin22'
+echo 'Example: clgmon.sh 10 22 will run every 10 seconds and query collegicoind in /$USER/.collegicoincore22'
 echo '\n\nPress Ctrl-C to Exit...'"
