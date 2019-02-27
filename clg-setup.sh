@@ -15,8 +15,8 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 #CLG TCP port
-PORT=12034
-RPC=12035
+PORT=21036
+RPC=21037
 
 #Clear keyboard input buffer
 function clear_stdin { while read -r -t 0; do read -r; done; }
@@ -77,6 +77,7 @@ sleep .5
 clear
 
 # Determine primary public IP address
+sudo apt-get update -y
 dpkg -s dnsutils 2>/dev/null >/dev/null || sudo apt-get -y install dnsutils
 publicip=$(dig +short myip.opendns.com @resolver1.opendns.com)
 
@@ -179,14 +180,15 @@ fi
 
  #Installing Daemon
  cd ~
-wget https://github.com/collegicoindev/collegicoin/releases/download/v3.0.0/collegicoin-v3.0.0-linux64.zip
-unzip collegicoin-v3.0.0-linux64.zip -d ~/CLG-MN-setup
-rm -rf collegicoin-v3.0.0-linux64.zip
+wget https://github.com/CollegicoinCLG/collegicoin/releases/download/v4.0.3/collegicoin-v4.0.3-linux.tar.gz
+tar -zxvf collegicoin-v4.0.3-linux.tar.gz -C ~/CLG-MN-setup
+rm -rf collegicoin-v4.0.3-linux.tar.gz
 
  
  stop_daemon
  
- # Deploy binaries to /usr/bin
+# Deploy binaries to /usr/bin
+ sudo rm *-qt
  sudo cp ~/CLG-MN-setup/collegicoin* /usr/bin/
  sudo chmod 755 -R ~/CLG-MN-setup
  sudo chmod 755 /usr/bin/collegicoin*
