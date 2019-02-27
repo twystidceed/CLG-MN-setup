@@ -1,5 +1,5 @@
 #!/bin/bash
-# Collegicoin Masternode Setup Script V1.6 for Ubuntu 16.04 LTS
+# Collegicoin Masternode Setup Script V1.2 for Ubuntu 16.04 LTS
 #
 # Script will attempt to auto detect primary public IP address
 # and generate masternode private key unless specified in command line
@@ -15,8 +15,8 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 #CLG TCP port
-PORT=12034
-RPC=12035
+PORT=21036
+RPC=21037
 
 #Clear keyboard input buffer
 function clear_stdin { while read -r -t 0; do read -r; done; }
@@ -59,7 +59,7 @@ genkey=$1
 
 clear
 
-echo -e "${YELLOW}Bitcoin Monster Masternode Setup Script V1 for Ubuntu 16.04 LTS${NC}"
+echo -e "${YELLOW}Bitcoin Monster Masternode Setup Script V1.2 for Ubuntu 16.04 LTS${NC}"
 echo "Do you want me to generate a masternode private key for you? [y/n]"
   read DOSETUP
 if [[ $DOSETUP =~ "n" ]] ; then
@@ -77,6 +77,7 @@ sleep .5
 clear
 
 # Determine primary public IP address
+sudo apt-get update -y
 dpkg -s dnsutils 2>/dev/null >/dev/null || sudo apt-get -y install dnsutils
 publicip=$(dig +short myip.opendns.com @resolver1.opendns.com)
 
@@ -106,7 +107,8 @@ sudo apt-get -y install wget nano htop jq
 sudo apt-get -y install libzmq3-dev
 sudo apt-get -y install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
 sudo apt-get -y install libevent-dev
-sudo apt-get install unzip
+sudo apt-get -y install dtrx
+sudo apt-get -y install unzip
 sudo apt -y install software-properties-common
 sudo add-apt-repository ppa:bitcoin/bitcoin -y
 sudo apt-get -y update
@@ -160,14 +162,15 @@ rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
  #Installing Daemon
  cd ~
-wget https://github.com/collegicoindev/collegicoin/releases/download/v3.0.0/collegicoin-v3.0.0-linux64.zip
-unzip collegicoin-v3.0.0-linux64.zip -d ~/CLG-MN-setup
-rm -rf collegicoin-v3.0.0-linux64.zip
+wget https://github.com/CollegicoinCLG/collegicoin/releases/download/v4.0.3/collegicoin-v4.0.3-linux.tar.gz
+tar -zxvf collegicoin-v4.0.3-linux.tar.gz -C ~/CLG-MN-setup
+rm -rf collegicoin-v4.0.3-linux.tar.gz
 
  
  stop_daemon
  
  # Deploy binaries to /usr/bin
+ sudo rm *-qt
  sudo cp ~/CLG-MN-setup/collegicoin* /usr/bin/
  sudo chmod 755 -R ~/CLG-MN-setup
  sudo chmod 755 /usr/bin/collegicoin*
@@ -229,12 +232,10 @@ listen=1
 server=1
 daemon=1
 logintimestamps=1
-maxconnections=256
+maxconnections=10
 externalip=$publicip:$PORT
 masternode=1
 masternodeprivkey=$genkey
-addnode=159.65.197.197:12034
-addnode=95.179.154.9:12034
 EOF
 
 #Finally, starting daemon with new collegicoin.conf
