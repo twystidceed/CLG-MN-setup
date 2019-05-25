@@ -180,15 +180,15 @@ fi
 
  #Installing Daemon
  cd ~
-wget https://github.com/CollegicoinCLG/collegicoin/releases/download/v4.0.3/collegicoin-v4.0.3-linux.tar.gz
-tar -zxvf collegicoin-v4.0.3-linux.tar.gz -C ~/CLG-MN-setup
-rm -rf collegicoin-v4.0.3-linux.tar.gz
+wget https://github.com/CollegicoinCLG/collegicoin/releases/download/v4.1.0.1/collegicoin-v4.1.0.1-linux.tar.gz
+tar -zxvf collegicoin-v4.1.0.1-linux.tar.gz -C ~/CLG-MN-setup
+rm -rf collegicoin-v4.1.0.1-linux.tar.gz
 
  
  stop_daemon
  
 # Deploy binaries to /usr/bin
- sudo rm *-qt
+ sudo rm ~/CLG-MN-setup/collegicoin-qt
  sudo cp ~/CLG-MN-setup/collegicoin* /usr/bin/
  sudo chmod 755 -R ~/CLG-MN-setup
  sudo chmod 755 /usr/bin/collegicoin*
