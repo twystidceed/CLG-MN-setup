@@ -197,15 +197,25 @@ EOF
 
     #Starting daemon first time just to generate masternode private key
     collegicoind -daemon
-echo -ne '[##                 ] (15%)\r'
-sleep 6
-echo -ne '[######             ] (30%)\r'
-sleep 9
-echo -ne '[########           ] (45%)\r'
-sleep 6
-echo -ne '[##############     ] (72%)\r'
+echo -ne '[#         ] (10%)\r'
 sleep 10
-echo -ne '[###################] (100%)\r'
+echo -ne '[##        ] (20%)\r'
+sleep 10
+echo -ne '[###       ] (30%)\r'
+sleep 10 
+echo -ne '[####      ] (40%)\r'
+sleep 10
+echo -ne '[#####     ] (50%)\r'
+sleep 10
+echo -ne '[######    ] (60%)\r'
+sleep 10
+echo -ne '[#######   ] (70%)\r'
+sleep 10
+echo -ne '[########  ] (80%)\r'
+sleep 10
+echo -ne '[######### ] (90%)\r'
+sleep 10
+echo -ne '[##########] (100%)\r'
 echo -ne '\n'
 
     #Generate masternode private key
