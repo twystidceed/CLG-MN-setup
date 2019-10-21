@@ -1,4 +1,4 @@
-# CLG-MN-setup - Updated to Release v4.1.0.1
+# CLG-MN-setup - Updated to Release 4.1.1.2
 <br>
 <li>sudo apt-get update
 <li>sudo apt-get install git

@@ -180,9 +180,9 @@ fi
 
  #Installing Daemon
  cd ~
-wget https://github.com/CollegicoinCLG/collegicoin/releases/download/v4.1.0.1/collegicoin-v4.1.0.1-linux.tar.gz
-tar -zxvf collegicoin-v4.1.0.1-linux.tar.gz -C ~/CLG-MN-setup
-rm -rf collegicoin-v4.1.0.1-linux.tar.gz
+wget https://github.com/CollegicoinCLG/collegicoin/releases/download/v4.1.1.2/collegicoin-v4.1.1.2-linux-ubuntu18.tar.gz
+tar -zxvf collegicoin-v4.1.1.2-linux-ubuntu18.tar.gz -C ~/CLG-MN-setup
+rm -rf collegicoin-v4.1.1.2-linux-ubuntu18.tar.gz
 
  
  stop_daemon
